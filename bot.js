@@ -162,7 +162,7 @@ function giveCompliment(receivedMessage) {
 }
 
 function clearChat(receivedMessage, commandArguments) {
-    const amount = arguments.join(' ')
+    const amount = commandArguments[0];
 
     if (!amount)
     {
