@@ -8,8 +8,7 @@ let prefix = ";";
 const token = process.env.TOKEN;
 client.login(token);
 
-client.on('ready', () =>
-{
+client.on('ready', () => {
     console.log("Connected!")
 
     client.user.setActivity(" ", {type: "PLAYING"})
@@ -31,8 +30,7 @@ client.on('message', (receivedMessage) => {
     }
 });
 
-function processCommand(receivedMessage)
-{
+function processCommand(receivedMessage) {
     const fullCommand = receivedMessage.content.substr(1);    // Remove the prefix
     const splitCommand = fullCommand.split(" ");           // Split the message up in to pieces for each space
     const primaryCommand = splitCommand[0];                        // The first word directly after the prefix is the command
@@ -83,8 +81,7 @@ function processCommand(receivedMessage)
     }
 }
 
-function annoySomeone(receivedMessage, commandArguments)
-{
+function annoySomeone(receivedMessage, commandArguments) {
     const user = commandArguments[0];
     const amount = commandArguments[1];
 
@@ -111,13 +108,11 @@ function annoySomeone(receivedMessage, commandArguments)
     }
 }
 
-function restart(receivedMessage)
-{
+function restart(receivedMessage) {
     receivedMessage.channel.send("I can't do that yet...");
 }
 
-function helpCommand(receivedMessage)
-{
+function helpCommand(receivedMessage) {
     const possibleCommands = {
         "help": "Get help for all the commands",
         "clear [amount]":  "Clear [amount] messages",
@@ -146,8 +141,7 @@ function helpCommand(receivedMessage)
     receivedMessage.channel.send(output);
 }
 
-function giveCompliment(receivedMessage)
-{
+function giveCompliment(receivedMessage) {
     const compliments = [
         "You look beautiful today :)",
         "Looking gooddddd " + receivedMessage.author.toString(),
@@ -167,8 +161,7 @@ function giveCompliment(receivedMessage)
     receivedMessage.channel.send(compliments[index]);
 }
 
-function clearChat(receivedMessage, commandArguments)
-{
+function clearChat(receivedMessage, commandArguments) {
     const amount = arguments.join(' ')
 
     if (!amount)
@@ -197,13 +190,11 @@ function clearChat(receivedMessage, commandArguments)
     }
 }
 
-function ping(receivedMessage)
-{
+function ping(receivedMessage) {
     receivedMessage.channel.send("pong lmao");
 }
 
-function eight_ball(receivedMessage, commandArguments)
-{
+function eight_ball(receivedMessage, commandArguments) {
     const reply = Math.floor(Math.random() * 4);
     let output = null;
 
@@ -236,8 +227,7 @@ function eight_ball(receivedMessage, commandArguments)
     receivedMessage.channel.send(output);
 }
 
-function need_attention(receivedMessage, commandArguments)
-{
+function need_attention(receivedMessage, commandArguments) {
     const amount = commandArguments;
     const love =  [
                     "Jasper loves you very much. Although he may not always show it, he loves you no matter what :)",
@@ -286,8 +276,7 @@ function need_attention(receivedMessage, commandArguments)
     }
 }
 
-function setPrefix(receivedMessage, commandArguments)
-{
+function setPrefix(receivedMessage, commandArguments) {
     prefix = commandArguments[0];
     receivedMessage.channel.send("Prefix updated! New prefix is now: **" + prefix + "**");
 }
